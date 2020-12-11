@@ -1,4 +1,4 @@
-km_age,mark,model,power,segment,state,transmission,year,engine_type,region,body_type,color,drive_type,wheell_type,condition,ownersCount,customs_cleared,price
+km_age,mark,model,power,segment,state,transmission,year,engine_type,region,body_type,color,drive_type,wheell_type,condition,owners_count,customs_cleared,price
 60000,KIA,OPTIMA,188,MEDIUM,used,AUTOMATIC,2018,GASOLINE,Зеленоград,седан,синий,передний,Левый,Не требует ремонта,1 владелец,Растаможен,1600000
 74000,AUDI,A4,170,PREMIUM,used,VARIATOR,2012,GASOLINE,Москва,седан,белый,передний,Левый,Не требует ремонта,3 или более,Растаможен,1040000
 39900,GAZ,21,75,MEDIUM,used,MECHANICAL,1970,GASOLINE,Москва,седан,серый,задний,Левый,Не требует ремонта,2 владельца,Растаможен,390000
