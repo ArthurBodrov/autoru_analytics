@@ -1,5 +1,7 @@
 # Анализ объявление на сайте Auto.ru
 
+## Знакомство с проектом
+
 ## Описание данных:
 | Параметр | Тип | Описание    |
 | :-- | :-- | :-- |
@@ -30,11 +32,11 @@
 
 Первично просматриваем данные.
 
-<img scr='img/firstly_look.png' width="400" height="400">
+<img src="img/firstly_look.png" width="600" height="400" />
 
 Просматривая колонки замечаем, что они написанные в разном формате, исправим это.
 
-<img scr='img/columns.png' width="400" height="400">
+<img src='img/columns.png' width="600" height="100">
 
 ### Переименование колонок
 1. engine-type -> engine_type, чтобы соотвестовала единному стилю
@@ -57,8 +59,8 @@ Index(['item_link', 'km_age', 'mark', 'markName', 'model', 'modelName',
 
 ### Вывожу процент заполненных данных
 
-<img scr='img/percent_miss_values.png' width="400" height="400">
+<img src='img/percent_miss_values.png' width="600" height="300">
 
 ```python
-cars = cars.drop('item_link', axis=1) # Дропаю 100% фичу 
+cars = cars.drop('item_link', axis=1) # Дропаю 100% пропущенную фичу 
 ```
