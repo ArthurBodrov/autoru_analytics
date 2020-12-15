@@ -38,7 +38,7 @@
 
 Просматривая колонки замечаем, что они написанные в разном формате, например, `engine-type, ownersCount и km_age` написанным 3 разными стилями через тире, camel case и snike case. Исправим это, приведем к snike case.
 
-<img src='img/columns.png' width="600" height="100">
+<img src='img/columns.png' width="900" height="128">
 
 ### Переименование колонок
 1. engine-type -> engine_type, чтобы соотвестовала единному стилю
@@ -66,14 +66,14 @@ Index(['item_link', 'km_age', 'mark', 'markName', 'model', 'modelName',
 
 ### А есть ли дубликаты в моем дата сете? Сейчас проверим.
 
-<img src='img/dup_check.png' width="600" height="100"/>
+<img src='img/dup_check.png' width="900" height="133"/>
 
 **54 тысячи дубликатов!** Я не поверил, поэтому решил проверить сам.
 
 Ищу дубликат и проверяю его.
 
 
-<img src='img/dup_example.png' width="600" height="450"/>
+<img src='img/dup_example.png' width="900" height="658"/>
 
 54 тысячи дубликатов стали похожи на правду.
 
