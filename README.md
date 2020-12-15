@@ -390,13 +390,13 @@ cars.to_csv('autoru_cleaned.csv', index=False)
 
 ### 1. Новые автомобили стоят больше, чем подержанные.
 
-<img src='img/data_vis/state_price.png' width="553" height="442"/>
+<img src='img/data_vis/state_price.png'/>
 
 **Вывод:** Новые автомобили стоят больше, действительно, стоят больше подержанных.
 
 ### 2. Чем больше лошадинные сил, тем больше цена.
 
-<img src='img/data_vis/state_price.png' width="878" height="476"/>
+<img src='img/data_vis/state_price.png'/>
 
 Коэффициент корреляци между `power` и `price` равен ***0.62***.
 
