@@ -34,7 +34,7 @@
 
 Первично просматриваем данные.
 
-<img src="img/firstly_look.png" width="600" height="400" />
+<img src="img/firstly_look.png" width="800" height="550" />
 
 Просматривая колонки замечаем, что они написанные в разном формате, например, `engine-type, ownersCount и km_age` написанным 3 разными стилями через тире, camel case и snike case. Исправим это, приведем к snike case.
 
