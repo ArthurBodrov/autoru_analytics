@@ -46,7 +46,10 @@
 3. ownersCount -> owners_count
    
 ```python
-cars = cars.rename(columns={'engine-type': 'engine_type', 'is_customs': 'customs_cleared', "ownersCount": "owners_count"})
+cars = cars.rename(columns={
+    'engine-type': 'engine_type', 
+    'is_customs': 'customs_cleared', 
+    'ownersCount': 'owners_count'})
 
 # Проверяем изменение 
 cars.columns
@@ -57,15 +60,9 @@ Index(['item_link', 'km_age', 'mark', 'markName', 'model', 'modelName',
        'type', 'region', 'body_type', 'color', 'drive_type', 'wheell_type',
        'condition', 'owners_count', 'customs_cleared', 'price'],
       dtype='object')
+
 ```
 
-### Вывожу процент заполненных данных
-
-<img src='img/percent_miss_values.png' width="600" height="300">
-
-```python
-cars = cars.drop('item_link', axis=1) # Дропаю 100% пропущенную фичу 
-```
 
 ### А есть ли дубликаты в моем дата сете? Сейчас проверим.
 
@@ -86,8 +83,16 @@ cars = cars.drop('item_link', axis=1) # Дропаю 100% пропущенную
 
 Займемся чисткой данных.
 
+### Вывожу процент незаполненных данных
+
+<img src='img/percent_miss_values.png' width="600" height="300">
+
+```python
+cars = cars.drop('item_link', axis=1) # Дропаю 100% пропущенную фичу 
+```
+
 ## Чистка данных
-1. Дропнуть modelName и markName
+1. Нужно дропнуть modelName и markName.
 2. Превести body_type и color  к одному формату.
 3. Заменить станции метро на город в region.
 4. Скорее всего `nan - drive_type, wheell_type, condition, ownersCount, customs_cleared` потому что это новые автомобили. А скрепер не может взять эти данные, поскольку они не доступны.
@@ -98,7 +103,7 @@ cars = cars.drop('item_link', axis=1) # Дропаю 100% пропущенную
 
 <img src='img/modelName_drop.png' width="600" height="70"/>
 
-#### 2. Превести body_type и color к одному формату. Сейчас плохо ('внедорожник 5 дв.', 'Внедорожник 5 дв.')
+#### 2. Превести body_type и color к одному формату. Сейчас неправильно ('внедорожник 5 дв.', 'Внедорожник 5 дв.')
 **Проблема:** 'внедорожник 5 дв.', 'Внедорожник 5 дв.' - это 2 разных варианта.
 
 |Было|Стало|
@@ -106,7 +111,7 @@ cars = cars.drop('item_link', axis=1) # Дропаю 100% пропущенную
 |**30 вариантов** - `['седан', 'внедорожник 5 дв.', 'Внедорожник 5 дв.', 'Седан', ... ]` | **20 вариантов**  - `['седан', 'внедорожник 5 дв.', 'универсал 5 дв.', ... ]` |
 | **27 вариантов** - `['Зелёный', 'синий', 'Синий', 'зелёный' .. ]` | **15 вариантов**  - `['синий', 'белый', 'серый', 'чёрный', 'оранжевый', 'коричневый', ... ]`|
 
-#### 3. Заменить станции метро на город в `region`
+#### 3. Заменить станции метро на город в колонке `region`.
 **Проблема:** на сайте не всегда указывают город, в большинстве указывают станцию метро. Разобразие названий метро будет мешать обучится модели, поэтому надо превести их в единому типу.
 Для этого я собрал название метро и МЦД в файл `moscow_stations.csv`
 Также я выделил некоторые станции МЦД в зону ***Москва и Московская область***.
