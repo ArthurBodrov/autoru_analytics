@@ -396,9 +396,9 @@ cars.to_csv('autoru_cleaned.csv', index=False)
 
 ### 2. Чем больше лошадинные сил, тем больше цена.
 
-<img src='img/data_vis/state_price.png'/>
-
 Коэффициент корреляци между `power` и `price` равен ***0.62***.
+
+<img src='img/data_vis/power_price.png'/>
 
 **Вывод:** Гипотеза подтвердилась.
 
