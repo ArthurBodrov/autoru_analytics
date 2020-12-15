@@ -79,13 +79,13 @@ Index(['item_link', 'km_age', 'mark', 'markName', 'model', 'modelName',
 
 Дропаю дубликат и в дата сете остается **4 891 наблюдений**.
 
-<img src='img/dup_drop.png' width="600" height="75"/>
+<img src='img/dup_drop.png' width="900" height="107"/>
 
 Займемся чисткой данных.
 
 ### Вывожу процент незаполненных данных
 
-<img src='img/percent_miss_values.png' width="600" height="300">
+<img src='img/percent_miss_values.png' width="900" height="357">
 
 ```python
 cars = cars.drop('item_link', axis=1) # Дропаю 100% пропущенную фичу 
@@ -101,7 +101,7 @@ cars = cars.drop('item_link', axis=1) # Дропаю 100% пропущенную
 #### 1. Дропнуть modelName и markName
 **Проблема:** Колонки дублируются. model и modelName, mark и markName предоставляют одно и ту же информацию.
 
-<img src='img/modelName_drop.png' width="600" height="70"/>
+<img src='img/modelName_drop.png' width="900" height="95"/>
 
 #### 2. Превести body_type и color к одному формату. Сейчас неправильно ('внедорожник 5 дв.', 'Внедорожник 5 дв.')
 **Проблема:** 'внедорожник 5 дв.', 'Внедорожник 5 дв.' - это 2 разных варианта.
@@ -120,6 +120,6 @@ cars = cars.drop('item_link', axis=1) # Дропаю 100% пропущенную
 
 Мапим значения метро к значению `"Москва"` и получаем ***106*** уникальных названий. Отлично!
 
-<img src='img/region_unique_replaced.png' width="477" height="220"/>
+<img src='img/region_unique_replaced.png' width="900" height="377"/>
 
 
