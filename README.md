@@ -379,7 +379,7 @@ cars.to_csv('autoru_cleaned.csv', index=False)
 
 # Визуализация данных
 
-Полный код можно посмотреть в [`jupyter notebook`]()
+Полный код можно посмотреть в [`jupyter notebook`](https://nbviewer.jupyter.org/github/ArthurBodrov/autoru_analytics/blob/main/Data%20Exploration.ipynb)
 
 ### Проверим есть ли выбросы в данных
 
@@ -458,3 +458,78 @@ cars.to_csv('autoru_cleaned.csv', index=False)
 ## Посмотрим на другие фичи, попробуем отрыть инсайты.
 
 ### Посмотрим на `drive_type`
+
+<img src='img/data_vis/drive_type_price.png'/>
+
+`drive_type` принесет мало пользы, поскольку самая большая цена у категории "неизвестно". А "неизвестно" означает, что автомобиль новый. И из-за того, что он новый у него большая цена.
+
+### Исследуем `engine_type`
+
+<img src='img/data_vis/engine_type_price.png'/>
+
+У типов: "Гибрид", "Электро", "LPG" - мало наблюдений. Это плохо потому что модель не сможет хорошо натренироваться для этих типов.
+
+#### Проверим еще одну гитопезу - "У автомобилей в `ECONOMY` сегменте меньше лошадиных сил".
+
+Я добавил красную линию, которая обозначает наименьшее количетсво лошадиных сил в `ECONOMY` сегменте. 
+
+<img src='img/data_vis/segment_power_price.png'/>
+
+```python
+for segment in cars['segment'].unique():
+    print(f'Segment: {segment}, mean value: {round(cars[cars["segment"] == segment]["power"].mean(), 2)}')
+
+# Выводит
+Segment: MEDIUM, mean value: 152.24
+Segment: PREMIUM, mean value: 264.98
+Segment: ECONOMY, mean value: 99.44
+```
+
+"У автомобилей в `ECONOMY` сегменте меньше лошадиных сил". - **Ложь**
+#### НО
+"У автомобилей в `ECONOMY` сегменте ***в среднем*** меньше лошадиных сил". - **Правда**
+
+#### У большинства автомобилей в `ECONOMY` сегменте дизель
+
+<img src='img/data_vis/engine_segment_price.png'/>
+
+**Гипотеза не подтвердилась.**
+
+### Автомобиль какого цвета стоит дороже всего?
+
+<img src='img/data_vis/color_price.png'/>
+
+```python
+color_n_price = []
+for color in cars['color'].unique():
+    mean_price = round(cars[cars["color"] == color]["price"].mean(), 2)
+    color_n_price.append({"color": color, "mean_price": mean_price})
+
+print(pd.DataFrame(color_n_price).nlargest(5, 'mean_price'))
+
+# Выводит
+        color  mean_price
+3      чёрный  2313334.05
+0       синий  2140263.23
+2       серый  1946682.99
+1       белый  1903897.62
+5  коричневый  1593404.50
+```
+
+Дороже всего стоит автомобили черного цвета. Но держать в уме количество количество автомобилей определенного цвета и размах цен.
+
+### Напоследок визуализирую корреляцию между фичами
+
+<img src='img/data_vis/corr_heatmap.png'/>
+
+Фича customs_cleared оказалась бесполезно, поскольку все автомобили на Auto.ru растаможены. Дропнем ее.
+
+```python
+cars_encoded = cars_encoded.drop('customs_cleared', axis=1)
+```
+
+### Выводит новый дата сет без выбросов
+
+```python
+cars_encoded.to_csv('cars_encoded_no_outliers.csv', index=False)
+```
