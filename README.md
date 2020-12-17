@@ -533,3 +533,44 @@ cars_encoded = cars_encoded.drop('customs_cleared', axis=1)
 ```python
 cars_encoded.to_csv('cars_encoded_no_outliers.csv', index=False)
 ```
+
+# Выбор модели
+
+В этой секцией я бы хотел ответить на вопрос, что влияет на цену автомобиля в бОльшей мере.
+
+### Натренируем несколько моделей и проверим их перфоманс
+1. Linear regression
+2. Lasso regression
+3. Ridge regression
+4. Desicion Tree regression
+5. Random Forest regression
+6. Gradient Boosting regression
+
+Пропускаем неинтересную часть с fit_predict_score. Если нужны подробности, можно посмотреть в [ноутбуке]().
+
+Перфоманс моделей я визуализоровал с помощью `barplot`.
+
+<img src='img/data_vis/estimators_score.png'/>
+
+Улучшить перфоманс можно, застекав модели.
+
+Проверим какой перфоманс у `StackingRegressor` с лучшими моделями: Ridge, RandomForest, GradientBoosting.
+
+Перфоманс не улучшился, а даже **ухудшился**.
+
+<img src='img/data_vis/stack_perfomance.png'/>
+
+Время узнать, какие фичи формируют цену в бОльшей степени. Для этой задачи возьмем 2 лучшие модели*: Random Forest, Gradient Boosting. 
+
+\* - лучшие и с возможностью вывести `feature_importance_`
+
+### Feature Importance
+
+<img src='img/data_vis/feature_importance.png'/>
+
+### Наиболее важными фича для моделей были:
+1. Кол-во лошадиных сил
+2. Год выпуска
+3. Пробег
+4. Сегмент
+5. Тип двигателя
