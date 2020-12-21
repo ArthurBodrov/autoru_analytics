@@ -551,7 +551,7 @@ cars_encoded.to_csv('cars_encoded_no_outliers.csv', index=False)
 5. Random Forest regression
 6. Gradient Boosting regression
 
-Пропускаем неинтересную часть с fit_predict_score. Если нужны подробности, можно посмотреть в [ноутбуке](https://nbviewer.jupyter.org/github/ArthurBodrov/autoru_analytics/blob/main/Notebooks/Model%20selection.ipynb).
+Пропускаем неинтересную часть с fit_predict_score. Если нужны подробности, можно посмотреть в [ноутбуке](https://nbviewer.jupyter.org/github/ArthurBodrov/autoru_analytics/blob/main/Notebooks/Model%20selection.ipynb). Метрика для оценивания перфоманса - RMSE (Root Mean Squared Error).
 
 Перфоманс моделей я визуализоровал с помощью `barplot`.
 
