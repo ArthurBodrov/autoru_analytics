@@ -414,8 +414,6 @@ cars.to_csv('autoru_cleaned.csv', index=False)
 
 ### 2. Чем больше лошадиных сил, тем больше цена.
 
-Коэффициент корреляци между `power` и `price` равен ***0.63***.
-
 <img src='img/data_vis/power_price.png'/>
 
 **Вывод:** Гипотеза подтвердилась. Причем не важно, будет ли это новый или б/у автомобиль.
@@ -436,15 +434,11 @@ cars.to_csv('autoru_cleaned.csv', index=False)
 
 <img src='img/data_vis/year_reg_1.png'/>
 
-Коэффициент корреляции между `year` и `price` равен **0.49**.
-
 <img src='img/data_vis/year_reg_2.png'/>
 
 **Вывод:** Гипотеза верна.
 
 ### 6. Чем больше пробег, тем дешевле автомобиль.
-
-Коэффициент корреляции между `km_age` и `price` равен **-0.5**.
 
 <img src='img/data_vis/km_age_reg.png'/>
 
